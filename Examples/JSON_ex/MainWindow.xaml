@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:JSON_ex"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label Content="Select Character" HorizontalAlignment="Left" Margin="53,50,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cboCharacter" HorizontalAlignment="Left" Margin="41,76,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cboCharacter_SelectionChanged"/>
-        <Label x:Name="lblname" Content="Label" HorizontalAlignment="Left" Margin="436,10,0,0" VerticalAlignment="Top" Height="106" Width="364" FontSize="24"/>
+    <Grid Background="#FFBED9FF">
+        <Label Content="Select a Character" HorizontalAlignment="Left" Margin="41,47,0,0" VerticalAlignment="Top" FontFamily="Bernard MT Condensed" FontSize="16"/>
+        <ComboBox x:Name="cboCharacters" HorizontalAlignment="Left" Margin="41,76,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cboCharacters_SelectionChanged_1"/>
+        <Label x:Name="lblName" Content="" HorizontalAlignment="Left" Margin="436,10,0,0" VerticalAlignment="Top" Height="106" Width="364" FontSize="24" FontFamily="Bernard MT Condensed"/>
         <Image x:Name="imgCharacter" HorizontalAlignment="Left" Height="264" Margin="233,87,0,0" VerticalAlignment="Top" Width="305"/>
 
 

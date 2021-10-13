@@ -21,30 +21,40 @@ namespace JSON_ex
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
+
+        
+        
     {
         public MainWindow()
         {
             InitializeComponent();
 
+            cboCharacters.Items.Clear();
+
             using (var client = new HttpClient())
             {
-                string jsonData = client.GetStringAsync("https://rickandmortyapi.com/api/character").Result;
+                string url = "https://rickandmortyapi.com/api/character?";
+                while (url != null)
+                { 
+                    string jsonData = client.GetStringAsync(url).Result;
 
-                RickandMortyAPI api = JsonConvert.DeserializeObject<RickandMortyAPI>(jsonData);
+                    RickAndMortyAPI api = JsonConvert.DeserializeObject<RickAndMortyAPI>(jsonData);
+                    foreach (Character item in api.results)
+                    {
+                        cboCharacters.Items.Add(item);
+                    }
 
-                foreach (var item in api.results)
-                {
-                    cboCharacter.Items.Add(item);
-                }
+                    url = api.info.next;
+                }   
             }
         }
 
-        private void cboCharacter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cboCharacters_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            Character selected = (Character)cboCharacter.SelectedItem;
+            Character selected = (Character)cboCharacters.SelectedItem;
 
             imgCharacter.Source = new BitmapImage(new Uri(selected.image));
-            lblname.Content = selected.name;
+            lblName.Content = selected.name;
         }
     }
 }
